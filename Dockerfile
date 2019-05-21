@@ -17,8 +17,10 @@ RUN pip install pygments
 # Add zsh plugins
 RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-COPY .zshrc ~/.zshrc
+COPY .zshrc /usr/src/
+RUN rm $HOME/.zshrc && \
+    mv /usr/src/.zshrc $HOME && \
+    chmod +x $HOME/.zshrc
 
 # Download WordPress CLI
 RUN curl -L https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > /usr/bin/wp  && \
