@@ -11,17 +11,24 @@ This image uses the [official wordpress docker image](https://github.com/docker-
 - pygments
 
 ## Usage
-### Start a container with Docker
+Creating a container alone with this image will not run your wordpress app. Subsequently you must include a database and then link it to your wordpress container. 
+
+### TL;DR;
 ```
-docker run -it --name your-container-name -p 80:80 -d itumulak/wordpress-cli
+mkdir -p your-project-folder/www && \
+cd  your-project-folder && \
+docker run --name your-wp-mysql-name -e MYSQL_DATABASE=wordpress -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress -d mysql:5.7 && \ 
+docker run --name your-wp-name -it --link your-wp-mysql-name -p 93:80 -v "$PWD/www":/var/www/html -e WORDPRESS_DB_HOST=your-wp-mysql-name:3306 -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress -d itumulak/wordpress-cli
 ```
 
-### Creating your stack with docker-compose
-Create a project directory and create `docker-compose.yml`, a YML file.
+### Creating your stack with docker-compose.
+With `docker-compose`, it is easy to build and maintain our stack this way.
 ```
-mkdir my-project && cd my-project && touch docker-compose.yml
+mkdir -p your-project-folder/www && \
+cd  your-project-folder && \
+curl -o docker-compose.yml https://gist.githubusercontent.com/itumulak/7b6d865ce7915ee8831c00f927693964/raw/docker-compose.yml
 ```
-Add the configuration you see below.
+Compare the configuration you see below and modify your YML file as needed.
 ```yaml
 version: '2'
 
@@ -68,7 +75,7 @@ volumes:
 ```
 Then:
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 ### Bash into the container with zsh
