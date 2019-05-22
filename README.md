@@ -1,7 +1,7 @@
 #  wordpress-cli
 This image uses the [official wordpress docker image](https://github.com/docker-library/wordpress/tree/047c3b4b0f54f80753e65c20dcc0064b0d39a76b/php7.1/apache) and then rebuild to bundle with WordPress CLI and other software packages. **For Development use only!** Do not ship in production but instead use the [official image](https://hub.docker.com/_/wordpress) or better its alphine version.  
 
-The following packages that where added:
+##### The following packages that where added:
 - WP CLI
 - vim
 - curl
