@@ -10,12 +10,12 @@ The following packages that where added:
 - pygments
 
 ## Usage
-###Start a container with Docker
+### Start a container with Docker
 ```
 docker run -it --name your-container-name -p 80:80 -d itumulak/wordpress-cli
 ```
 
-###Creating your stack with docker-compose
+### Creating your stack with docker-compose
 Create a YML file.
 ```yaml
 version: '2'
