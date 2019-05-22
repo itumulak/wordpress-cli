@@ -7,6 +7,7 @@ This image uses the [official wordpress docker image](https://github.com/docker-
 - curl
 - git
 - zsh with oh-my-zsh
+    - included zsh plugins: `zsh-syntax-highlighting` and `zsh-autosuggestions`
 - pygments
 
 ## Usage
