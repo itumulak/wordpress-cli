@@ -17,7 +17,11 @@ docker run -it --name your-container-name -p 80:80 -d itumulak/wordpress-cli
 ```
 
 ### Creating your stack with docker-compose
-Create a YML file.
+Create a project directory and create `docker-compose.yml`, a YML file.
+```
+mkdir my-project && cd my-project && touch docker-compose.yml
+```
+Add the configuration you see below.
 ```yaml
 version: '2'
 
