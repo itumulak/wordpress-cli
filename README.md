@@ -18,7 +18,7 @@ Creating a container alone with this image will not run your wordpress app. Subs
 mkdir -p your-project-folder/www && \
 cd  your-project-folder && \
 docker run --name your-wp-mysql-name -e MYSQL_DATABASE=wordpress -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress -d mysql:5.7 && \ 
-docker run --name your-wp-name -it --link your-wp-mysql-name -p 93:80 -v "$PWD/www":/var/www/html -e WORDPRESS_DB_HOST=your-wp-mysql-name:3306 -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress -d itumulak/wordpress-cli
+docker run --name your-wp-name -it --link your-wp-mysql-name -p 80:80 -v "$PWD/www":/var/www/html -e WORDPRESS_DB_HOST=your-wp-mysql-name:3306 -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress -d itumulak/wordpress-cli
 ```
 
 ### Creating your stack with docker-compose.
@@ -77,6 +77,7 @@ Then:
 ```
 docker-compose up -d
 ```
+If everything goes well, you can go to `http://localhost` and do the wordpress setup.
 
 ### Bash into the container with zsh
 ```
